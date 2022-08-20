@@ -41,13 +41,13 @@ extension_services:
           My_Dns:
             class: DNS
             nameServers:
-              - 1.1.1.1
+              - 169.254.169.253
             search:
               - f5.com
           My_System:
             autoPhonehome: true
             class: System
-            hostname: 'failover01.local'
+            hostname: 'f5-01.local'
           My_License:
             class: License
             licenseType: regKey
@@ -248,7 +248,7 @@ extension_services:
           My_System:
             autoPhonehome: true
             class: System
-            hostname: 'failover01.local'
+            hostname: 'f5-01.local'
           admin:
             class: User
             userType: regular
@@ -317,7 +317,7 @@ extension_services:
             class: DeviceTrust
             localUsername: admin
             localPassword: '{{{BIGIP_PASSWORD}}}'
-            remoteHost: /Common/failoverGroup/members/0
+            remoteHost: '{{{REMOTE_HOST}}}'
             remoteUsername: admin
             remotePassword: '{{{BIGIP_PASSWORD}}}'
 runtime_parameters:
@@ -363,3 +363,8 @@ runtime_parameters:
       type: uri
       value: /latest/dynamic/instance-identity/document
       query: region
+  - name: REMOTE_HOST
+    type: tag
+    tagProvider:
+      environment: aws
+      key: bigIpPeerAddr
