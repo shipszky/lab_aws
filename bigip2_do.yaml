@@ -47,7 +47,7 @@ extension_services:
           My_System:
             autoPhonehome: true
             class: System
-            hostname: 'failover02.local'
+            hostname: 'f5-02.local'
           My_License:
             class: License
             licenseType: regKey
@@ -242,13 +242,13 @@ extension_services:
           My_Dns:
             class: DNS
             nameServers:
-              - 1.1.1.1
+              - 169.254.169.253
             search:
               - f5.com
           My_System:
             autoPhonehome: true
             class: System
-            hostname: 'failover02.local'
+            hostname: 'f5-02.local'
           admin:
             class: User
             userType: regular
